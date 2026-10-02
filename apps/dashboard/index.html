@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TerraCert Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">TC</div>
+          <div>
+            <p class="eyebrow">Platform</p>
+            <h1 class="brand-title">TerraCert</h1>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Sidebar navigation">
+          <p class="nav-label">Overview</p>
+          <button class="nav-link active" data-tab="dashboard" type="button">Dashboard</button>
+          <button class="nav-link" data-tab="parcels" type="button">Parcels</button>
+          <button class="nav-link" data-tab="verification" type="button">Verification</button>
+          <button class="nav-link" data-tab="caveats" type="button">Caveats</button>
+          <button class="nav-link" data-tab="reports" type="button">Reports</button>
+          <button class="nav-link" data-tab="payments" type="button">Payments</button>
+          <button class="nav-link" data-tab="settings" type="button">Settings</button>
+        </nav>
+
+        <div class="mini-card">
+          <p class="eyebrow">System health</p>
+          <div class="status-row">
+            <span class="dot ok"></span>
+            <span>API online</span>
+          </div>
+          <div class="status-row">
+            <span class="dot ok"></span>
+            <span>Database synced</span>
+          </div>
+          <div class="status-row">
+            <span class="dot warn"></span>
+            <span>2 review queues</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Operations overview</p>
+            <h2 id="pageTitle">Verification dashboard</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-btn" id="exportBtn" type="button">Export</button>
+            <button class="primary-btn" id="newCaseBtn" type="button">New case</button>
+          </div>
+        </header>
+
+        <section class="stats-grid" id="statsGrid"></section>
+
+        <section class="content-grid">
+          <div class="panel wide-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Queue</p>
+                <h3>Verification pipeline</h3>
+              </div>
+              <button class="link-btn" id="viewAllBtn" type="button">View all</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Parcel</th>
+                    <th>Type</th>
+                    <th>Owner</th>
+                    <th>Risk</th>
+                    <th>Updated</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="queueTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Coverage</p>
+                <h3>Risk map</h3>
+              </div>
+            </div>
+            <div class="map-card">
+              <div class="map-grid">
+                <span class="map-pin pin-red" style="top: 20%; left: 30%;"></span>
+                <span class="map-pin pin-amber" style="top: 40%; left: 52%;"></span>
+                <span class="map-pin pin-green" style="top: 62%; left: 70%;"></span>
+                <span class="map-pin pin-blue" style="top: 72%; left: 38%;"></span>
+              </div>
+            </div>
+            <div class="risk-list">
+              <div>
+                <strong>North Ward</strong>
+                <span>High dispute rate</span>
+              </div>
+              <div>
+                <strong>Central Market</strong>
+                <span>Moderate review load</span>
+              </div>
+              <div>
+                <strong>West Ridge</strong>
+                <span>Low anomaly signal</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Operational</p>
+                <h3>Review progress</h3>
+              </div>
+            </div>
+            <div class="progress-list" id="progressList"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Recent updates</p>
+                <h3>Live activity</h3>
+              </div>
+            </div>
+            <ul class="activity-list" id="activityList"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
